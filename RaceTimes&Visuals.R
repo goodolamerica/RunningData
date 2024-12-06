@@ -1,5 +1,5 @@
 ###libraries needed
-#tidyverse, tidyr, dplyr, ggplot2, lubridate, here, readr, tibble, chron
+#tidyverse, tidyr, dplyr, ggplot2, lubridate, here, readr, tibble, chron, skimr
 #read in file
 OriginalRaceData <- read.csv('~/Data Analytics/Course 8 - Portfolio/Matthew Running Data/RStudio/Attempt 2/RunningDataAtmpt2.csv')
 
@@ -64,7 +64,7 @@ Pace10k <- ggplot(All10kRaces) +
   labs(title = "10k Pace Over Years", subtitle = "Years between 2018 & 2024", caption = "Data Source: Personal Attendance for Races", x = "Year", y = "Mile Pace(min)")
 
 #10k pace for each race ran more than once (over years)
-RacePace10k <- ggplot(filter(All10kRaces, n > 1)) +
+RacePace10k <- ggplot(filter(All10kRaces, RaceAttendance > 1)) +
   geom_line(mapping = aes(Year, PacePerMile)) +
   scale_y_chron(format = "%M:%S") +
   labs(title = "10K Pace per Race", subtitle = "Races Attended Multiple Years", caption = "Data Source: Personal Attendance for Races", x = "Years Attended", y = "Mile Pace(min)") +
